@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Live Weather — responsive animated weather dashboard using Open-Meteo.">
+  <title>SkyCast | Live Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sky-bg" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="cloud cloud-a"></div>
+    <div class="cloud cloud-b"></div>
+    <div class="cloud cloud-c"></div>
+    <div class="star star-1">✦</div><div class="star star-2">✦</div><div class="star star-3">✦</div>
+  </div>
+
+  <header class="header">
+    <div class="container nav-wrap">
+      <a class="logo" href="#"><span class="logo-icon">☁</span><span>Sky<span>Cast</span></span></a>
+      <nav>
+        <a class="active" href="#weather">Weather</a>
+        <a href="#forecast">Forecast</a>
+        <a href="#details">Details</a>
+        <a href="#tips">Weather Tips</a>
+      </nav>
+      <button class="unit-btn" id="unitToggle">°C / °F</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="weather">
+      <div class="hero-copy">
+        <div class="badge">● LIVE WEATHER</div>
+        <h1>What's the weather<br><span>like today?</span></h1>
+        <p>Search any city and get live conditions, temperature, wind, humidity and a 7-day forecast.</p>
+
+        <form class="search" id="searchForm">
+          <span>⌕</span>
+          <input id="cityInput" type="text" placeholder="Search city e.g. Lahore" autocomplete="off" required>
+          <button type="submit">Search</button>
+        </form>
+        <button class="location-btn" id="locationBtn">◎ Use my location</button>
+
+        <div class="mini-stats">
+          <div><strong id="miniWind">--</strong><small>Wind</small></div>
+          <div><strong id="miniHumidity">--</strong><small>Humidity</small></div>
+          <div><strong id="miniFeels">--</strong><small>Feels like</small></div>
+        </div>
+      </div>
+
+      <div class="weather-card" id="weatherCard">
+        <div class="card-top">
+          <div><span id="currentCity">Lahore, Pakistan</span><small id="updated">Loading...</small></div>
+          <button id="refreshBtn" title="Refresh weather">↻</button>
+        </div>
+        <div class="cartoon-scene" id="cartoonScene">
+          <div class="cartoon-sun"></div>
+          <div class="cartoon-cloud"></div>
+          <div class="rain rain1"></div><div class="rain rain2"></div><div class="rain rain3"></div>
+          <div class="ground"></div>
+          <div class="weather-character" id="weatherCharacter">☀️</div>
+        </div>
+        <div class="temperature"><span id="temperature">--</span><sup>°C</sup></div>
+        <div class="condition" id="condition">Getting weather...</div>
+        <div class="highlow"><span>H <b id="high">--°</b></span><span>L <b id="low">--°</b></span></div>
+      </div>
+    </section>
+
+    <section class="section" id="forecast">
+      <div class="section-title">
+        <div><span>7-DAY FORECAST</span><h2>Weather this week</h2></div>
+        <p id="forecastNote">Updated live from Open-Meteo</p>
+      </div>
+      <div class="forecast-grid" id="forecastGrid"></div>
+    </section>
+
+    <section class="details-section section" id="details">
+      <div class="section-title">
+        <div><span>WEATHER DETAILS</span><h2>Know before you go</h2></div>
+      </div>
+      <div class="detail-grid">
+        <article class="detail-card"><div class="detail-icon">💧</div><span>Humidity</span><strong id="humidity">--%</strong><small>Relative humidity</small></article>
+        <article class="detail-card"><div class="detail-icon">💨</div><span>Wind Speed</span><strong id="wind">-- km/h</strong><small id="windDir">Direction --</small></article>
+        <article class="detail-card"><div class="detail-icon">☀️</div><span>UV Index</span><strong id="uv">--</strong><small id="uvText">Loading</small></article>
+        <article class="detail-card"><div class="detail-icon">👁️</div><span>Visibility</span><strong id="visibility">-- km</strong><small>Current estimate</small></article>
+      </div>
+    </section>
+
+    <section class="tips section" id="tips">
+      <div class="tip-character">🧑‍🚀</div>
+      <div><span>SKYCAST TIP</span><h2 id="tipTitle">Stay weather-ready!</h2><p id="tipText">Check the forecast before you head outside and keep an umbrella handy when rain is expected.</p></div>
+      <div class="tip-cloud">☁️</div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="logo"><span class="logo-icon">☁</span><span>Sky<span>Cast</span></span></div>
+      <p>Live weather powered by Open-Meteo. No API key required.</p>
+      <span>© 2026 SkyCast</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
